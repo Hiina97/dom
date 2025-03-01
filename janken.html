@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>じゃんけん</title>
+    <style>
+        *{
+            text-align: center;
+        }
+        #feeld{
+            display: flex;
+            justify-content: space-around;
+        }
+    </style>
+</head>
+<body>
+    <h1>じゃんけんゲーム</h1>
+    <div id="result"></div>
+
+    <div id="feeld">
+        <div>
+            <h2>私</h2>
+            <div id="hand"></div>
+        </div>
+        <div>
+            <h2>相手</h2>
+            <div id="vs_hand">
+            </div>
+        </div>
+    </div>
+    <button onclick="janken(0)">✊</button>
+    <button onclick="janken(1)">✌️</button>
+    <button onclick="janken(2)">✋</button>
+
+    <div id="message"></div>
+    
+    <script>
+        function janken(te){
+            const my_te = ["グー","チョキ","パー"];
+            document.getElementById("hand").textContent=my_te[te];
+
+            aitenote(te)
+        };
+
+        function aitenote(te){
+            const vs_te = ["グー","チョキ","パー"];
+            const random = Math.floor(Math.random()*vs_te.length);
+            // console.log(random);
+            document.getElementById("vs_hand").textContent=vs_te[random];
+            judge(te,random);
+            
+            
+        };
+
+        let continuous = 0;
+        judge = (my_te,vs_te) => {
+            let result = "";
+            if(my_te === vs_te){
+                result="あいこ";
+            }else if(my_te=== vs_te - 1){
+                result= "勝ち"
+            }else if (my_te=== vs_te + 2){
+                result= "勝ち";
+            }else{
+                result = "負け";
+            }
+            document.getElementById("result").textContent=result;
+
+            if (result === "勝ち"){
+                continuous = continuous + 1;
+            }else {
+                continuous = 0;
+            }
+
+            const audio = new Audio('レベルアップ.mp3');
+
+            if(continuous >=2){
+                document.getElementById("message").textContent=continuous+"連勝！";
+                audio.play();
+            }else{
+                document.getElementById("message").textContent="";
+            }
+
+            
+            
+            
+
+            
+
+        }
+
+        
+
+      
+    </script>
+</body>
+</html>
