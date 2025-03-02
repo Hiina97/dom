@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #message{
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: black;
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>テキストを表示させよう</h1>
+    <button id="toggleTextBtn">表示する</button>
+    <p id="message">表示されたよ!</p>
+
+    <script>
+        const toggleBtn = document.getElementById("toggleTextBtn");
+        const message = document.getElementById("message");
+
+        // console.log(toggleBtn);
+
+        toggleBtn.addEventListener("click", function(){
+            if (message.style.display === "none"){
+                message.style.display ="block";
+                toggleBtn.textContent = "非表示にする";
+            }else{
+                message.style.display = "none";
+                toggleBtn.textContent = "表示する";
+            }
+        })
+    </script>
+</body>
+</html>

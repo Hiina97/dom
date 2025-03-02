@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おみくじ</title>
+    <style>
+        *{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>おみくじ</h1>
+    <p id="result"></p>
+
+    <button id="btn">今日の運勢を占う</button>
+
+    <script>
+        const result = document.getElementById("result");
+        const btn = document.getElementById("btn");
+
+        btn.addEventListener("click", function (){
+            const omikuji = ["大吉","中吉","小吉","末吉","吉","凶","大凶"]
+            const randomNum= Math.floor(Math.random()*omikuji.length);
+            console.log(omikuji[randomNum]);
+
+            result.textContent = omikuji[randomNum];
+            
+        })
+    </script>
+</body>
+</html>

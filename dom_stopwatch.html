@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ドキドキストップウォッチ</title>
+    <style>
+        *{
+            text-align: center;
+        }
+        .d-none{
+            display: none;
+        }
+        #hide{
+            width: 50px;
+            height: 50px;
+            background-color: aqua;
+            position: relative;    
+    
+
+        }
+        #display{
+            position: absolute;
+            font-size: 40px;
+            
+            
+        }
+        #btn{
+            margin-top: 50px;
+            
+        }
+
+        #result{
+            margin: 0 auto;
+            width: 50px;
+            height: 50px;
+            
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h1>ドキドキストップウォッチ</h1>
+    <p>10秒で止めてね!</p>
+    <div id="result">
+        
+        <div id="display">0</div>
+        <div id="hide" class="d-none"></div>
+
+    </div>
+    
+    <button id="btn">スタート</button>
+
+    <script>
+        const display = document.getElementById("display");
+        const btn = document.getElementById("btn");
+        const hide = document.getElementById("hide");
+        let counter = 0;
+
+        let timer = null;
+
+        btn.addEventListener("click",()=>{
+            if(btn.textContent === "スタート"){
+            btn.textContent = "ストップ";
+            timer=setInterval(() => {
+                plusone()
+            }, 1000);
+            setTimeout(() =>{
+                switchDisplay();
+            },3000);
+
+            }else{
+                btn.textContent = "スタート";
+                clearInterval(timer);
+                hide.classList.add("d-none");
+        } 
+        })
+        plusone = () =>{
+            counter += 1;
+            display.textContent = counter;
+            
+
+        }
+        switchDisplay = () =>{
+            hide.classList.remove("d-none");
+        } 
+        
+        
+
+    </script>
+</body>
+</html>
